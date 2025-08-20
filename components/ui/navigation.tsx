@@ -57,7 +57,7 @@ export default function Navigation() {
               className="text-lg font-bold text-purple-600"
               onClick={closeMenu}
             >
-              The Daily Chuckle
+              The Daily Pine
             </Link>
             <button
               onClick={toggleMenu}
