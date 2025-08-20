@@ -3,6 +3,7 @@ import { stories } from '@/lib/database';
 import StoryCard from '@/components/ui/story-card';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import ShareButtons from '@/components/ui/share-buttons';
 
 export async function generateStaticParams() {
   return stories.map((story) => ({
@@ -106,23 +107,11 @@ export default async function StoryPage({ params }: StoryPageProps) {
         </div>
 
         {/* Share Article */}
-        <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-200">
-          <h3 className="text-lg font-bold text-gray-800 mb-3">Share This Story</h3>
-          <p className="text-sm text-gray-600 mb-4">
-            Spread the laughter with your friends and family!
-          </p>
-          <div className="space-y-2">
-            <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition-colors text-sm">
-              Share on Twitter
-            </button>
-            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition-colors text-sm">
-              Share on Facebook
-            </button>
-            <button className="w-full bg-gray-500 hover:bg-gray-600 text-white py-2 rounded-lg transition-colors text-sm">
-              Copy Link
-            </button>
-          </div>
-        </div>
+        <ShareButtons 
+          title={story.title}
+          url={`/story/${story.url_slug}`}
+          excerpt={story.excerpt}
+        />
       </div>
     </div>
   );
