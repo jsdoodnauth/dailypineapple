@@ -12,7 +12,7 @@ export default function HeroBanner({ story }: HeroBannerProps) {
         <span className="bg-purple-200 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">
           Featured Story
         </span>
-        <span className="text-purple-600 text-sm font-medium">{story.category}</span>
+        <span className="text-purple-600 text-sm font-medium">{story.section}</span>
         <span className="text-gray-500 text-sm">{story.views} views</span>
       </div>
       
