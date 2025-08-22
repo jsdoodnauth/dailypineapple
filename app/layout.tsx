@@ -30,7 +30,7 @@ export default function RootLayout({
             <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-2">
               The Daily <span className="text-purple-600">Pine</span>
             </h1>
-            <p className="text-gray-600 text-lg">A dose of humor</p>
+            <p className="text-gray-600 text-lg">A dose of ridiculous humor</p>
             <p className="text-purple-600 font-medium mt-2 text-sm">{currentDate}</p>
           </div>
         </header>

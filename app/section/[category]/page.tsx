@@ -17,7 +17,8 @@ export default async function SectionPage({ params }: SectionPageProps) {
     notFound();
   }
 
-  const stories = await getStoriesBySection(category, (new Date).toISOString().substring(0, 10));
+  const today = new Date().toISOString().split('T')[0];
+  const stories = await getStoriesBySection(category, today);
   const featuredStory = stories.find(s => s.featured);
   const otherStories = stories.filter(s => !s.featured);
 

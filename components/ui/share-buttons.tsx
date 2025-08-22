@@ -18,7 +18,7 @@ export default function ShareButtons({ title, url, excerpt }: ShareButtonsProps)
   const encodedExcerpt = encodeURIComponent(excerpt);
 
   const handleTwitterShare = () => {
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}&via=DailyChuckle`;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}&via=DailyPine`;
     window.open(twitterUrl, '_blank', 'width=550,height=420');
   };
 

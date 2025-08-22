@@ -4,8 +4,9 @@ import StoryCard from '@/components/ui/story-card';
 import Link from 'next/link';
 
 export default async function HomePage() {
-  const todayStories = await getStoriesByDate((new Date).toISOString().substring(0, 10));
-  const featuredStories = await getFeaturedStories((new Date).toISOString().substring(0, 10));
+  const today = new Date().toISOString().split('T')[0];
+  const todayStories = await getStoriesByDate(today);
+  const featuredStories = await getFeaturedStories(today);
   const mainFeatured = featuredStories[0];
   const otherFeatured = featuredStories.slice(1);
 

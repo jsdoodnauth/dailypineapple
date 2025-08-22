@@ -155,12 +155,13 @@ export const stories: Story[] = [
 ];
 
 // Helper functions to simulate database queries
-export async function getStoriesByDate(date: string = "2025-01-15"): Promise<Story[]> {
+export async function getStoriesByDate(date?: string): Promise<Story[]> {
+  const targetDate = date || new Date().toISOString().split('T')[0];
   // return stories.filter(story => story.date === date);
   try {
     const connection = await getConnection();
     const [rows] = await connection.execute(
-      `SELECT * FROM stories WHERE date='${date}'`
+      `SELECT * FROM stories WHERE date='${targetDate}'`
     );
     connection.releaseConnection;
     return rows as Story[];
@@ -170,12 +171,13 @@ export async function getStoriesByDate(date: string = "2025-01-15"): Promise<Sto
   }
 }
 
-export async function getStoriesBySection(section: string, date: string = "2025-01-15"): Promise<Story[]> {
+export async function getStoriesBySection(section: string, date?: string): Promise<Story[]> {
+  const targetDate = date || new Date().toISOString().split('T')[0];
   // return stories.filter(story => story.section === section && story.date === date);  
   try {
     const connection = await getConnection();
     const [rows] = await connection.execute(
-      `SELECT * FROM stories WHERE section='${section}' AND date='${date}'`
+      `SELECT * FROM stories WHERE section='${section}' AND date='${targetDate}'`
     );
     connection.releaseConnection;
     return rows as Story[];
@@ -202,12 +204,13 @@ export async function getStoryBySlug(slug: string): Promise<Story | null> {
   }
 }
 
-export async function getFeaturedStories(date: string = "2025-01-15"): Promise<Story[]> {
+export async function getFeaturedStories(date?: string): Promise<Story[]> {
+  const targetDate = date || new Date().toISOString().split('T')[0];
   // return stories.filter(story => story.featured && story.date === date);
   try {
     const connection = await getConnection();
     const [rows] = await connection.execute(
-      `SELECT * FROM stories WHERE featured=TRUE AND date='${date}'`
+      `SELECT * FROM stories WHERE featured=TRUE AND date='${targetDate}'`
     );
     connection.releaseConnection;
     return rows as Story[];
