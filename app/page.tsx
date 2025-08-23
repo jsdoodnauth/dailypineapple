@@ -58,7 +58,7 @@ export default async function HomePage() {
         )}
 
         {/* Previous Day Button */}
-        <div className="text-center py-8">
+        <div className="text-left py-8">
           {(() => {
             const yesterday = new Date();
             yesterday.setDate(yesterday.getDate() - 1);

@@ -39,8 +39,6 @@ export default async function DatePage({ params }: DatePageProps) {
     day: 'numeric'
   });
 
-  console.log('formatted: ', date, formattedDate);
-
   // Calculate previous day
   const previousDay = new Date(date);
   previousDay.setDate(previousDay.getDate() - 1);
