@@ -35,9 +35,13 @@ export default async function CategoryDatePage({ params }: CategoryDatePageProps
   const otherStories = stories.filter(s => !s.featured);
 
   // Get sidebar stories from other categories
-  const allDateStories = categories
-    .filter(cat => cat !== category)
-    .flatMap(cat => getStoriesBySection(cat, dateString))
+  const sidebarStoriesArrays = await Promise.all(
+    categories
+      .filter(cat => cat !== category)
+      .map(cat => getStoriesBySection(cat, dateString))
+  );
+  const allDateStories = sidebarStoriesArrays
+    .flat()
     .filter(s => !s.featured)
     .slice(0, 6);
 
