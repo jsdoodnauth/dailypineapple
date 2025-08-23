@@ -54,6 +54,7 @@ export default async function CategoryDatePage({ params }: CategoryDatePageProps
 
   // Calculate previous day
   const previousDay = new Date(date);
+  previousDay.setDate(previousDay.getDate() - 1);
   const previousDayString = previousDay.toISOString().split('T')[0];
 
   // Check if this is today

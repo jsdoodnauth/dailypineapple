@@ -15,7 +15,7 @@ export default async function DatePage({ params }: DatePageProps) {
   if (!dateRegex.test(params.date)) {
     notFound();
   }
-  
+
   const [year, month, day] = params.date.split('-').map(Number);
   const date = new Date(year, month - 1, day);
   if (isNaN(date.getTime())) {
@@ -43,6 +43,7 @@ export default async function DatePage({ params }: DatePageProps) {
 
   // Calculate previous day
   const previousDay = new Date(date);
+  previousDay.setDate(previousDay.getDate() - 1);
   const previousDayString = previousDay.toISOString().split('T')[0];
 
   // Check if this is today
