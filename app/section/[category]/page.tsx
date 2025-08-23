@@ -61,12 +61,19 @@ export default async function SectionPage({ params }: SectionPageProps) {
 
       {/* Previous Day Button */}
       <div className="text-center py-8">
-        <Link 
-          href={`/section/${params.category}/previous-day`}
-          className="bg-purple-100 hover:bg-purple-200 text-purple-700 px-8 py-3 rounded-full font-semibold transition-colors inline-flex items-center gap-2"
-        >
-          ← View Previous Day's {category} Stories
-        </Link>
+        {(() => {
+          const yesterday = new Date();
+          yesterday.setDate(yesterday.getDate() - 1);
+          const yesterdayString = yesterday.toISOString().split('T')[0];
+          return (
+            <Link 
+              href={`/section/${params.category}/${yesterdayString}`}
+              className="bg-purple-100 hover:bg-purple-200 text-purple-700 px-8 py-3 rounded-full font-semibold transition-colors inline-flex items-center gap-2"
+            >
+              ← View Previous Day's {category} Stories
+            </Link>
+          );
+        })()}
       </div>
     </div>
   );

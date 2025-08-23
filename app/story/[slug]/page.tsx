@@ -4,6 +4,7 @@ import StoryCard from '@/components/ui/story-card';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ShareButtons from '@/components/ui/share-buttons';
+import { appConfig } from '@/lib/utils';
 
 export async function generateStaticParams() {
   return stories.map((story) => ({
@@ -40,7 +41,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
               >
                 {story.section}
               </Link>
-              <span className="text-gray-500 text-sm">{story.views} views</span>
+              { appConfig.storyViewsToggle && <span className="text-gray-500 text-sm">{story.views} views</span> }
             </div>
             
             <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 leading-tight">

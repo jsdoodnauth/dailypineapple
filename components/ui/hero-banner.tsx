@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Story } from '@/lib/database';
+import { appConfig } from '@/lib/utils';
 
 interface HeroBannerProps {
   story: Story;
@@ -13,7 +14,7 @@ export default function HeroBanner({ story }: HeroBannerProps) {
           Featured Story
         </span>
         <span className="text-purple-600 text-sm font-medium">{story.section}</span>
-        <span className="text-gray-500 text-sm">{story.views} views</span>
+        { appConfig.storyViewsToggle && <span className="text-gray-500 text-sm">{story.views} views</span> }
       </div>
       
       <Link href={`/story/${story.url_slug}`}>

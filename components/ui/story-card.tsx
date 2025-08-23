@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Story } from '@/lib/database';
+import { appConfig } from '@/lib/utils';
 
 interface StoryCardProps {
   story: Story;
@@ -21,7 +22,7 @@ export default function StoryCard({ story, featured = false, compact = false }: 
               <span className="bg-purple-200 text-purple-800 px-2 py-1 rounded-full text-xs font-semibold">
                 {story.section}
               </span>
-              <span className="text-gray-500 text-xs">{story.views} views</span>
+              { appConfig.storyViewsToggle && <span className="text-gray-500 text-xs">{story.views} views</span>}
             </div>
             <h3 className="font-bold text-gray-800 text-sm mb-2 group-hover:text-purple-600 transition-colors line-clamp-2 flex-grow">
               {story.title}
@@ -44,9 +45,11 @@ export default function StoryCard({ story, featured = false, compact = false }: 
             <span className="bg-purple-200 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">
               {story.section}
             </span>
-            <div className="flex items-center gap-2 text-gray-500 text-sm">
-              <span>{story.views} views</span>
-            </div>
+            { appConfig.storyViewsToggle && 
+              <div className="flex items-center gap-2 text-gray-500 text-sm">
+                <span>{story.views} views</span>
+              </div>
+            }
           </div>
 
           {/* Story Title */}
