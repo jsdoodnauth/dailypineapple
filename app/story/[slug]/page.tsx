@@ -1,16 +1,9 @@
-import { getStoryBySlug, getRandomStories } from '@/lib/database';
-import { stories } from '@/lib/database';
+import { getStoryBySlug, getRandomStories, Story } from '@/lib/database';
 import StoryCard from '@/components/ui/story-card';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ShareButtons from '@/components/ui/share-buttons';
 import { appConfig } from '@/lib/utils';
-
-export async function generateStaticParams() {
-  return stories.map((story) => ({
-    slug: story.url_slug,
-  }));
-}
 
 interface StoryPageProps {
   params: {
@@ -101,7 +94,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
         <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-purple-100">
           <h3 className="text-xl font-bold text-gray-800 mb-4">You Might Also Enjoy</h3>
           <div className="space-y-4">
-            {relatedStories.map(relatedStory => (
+            {(await relatedStories).map((relatedStory: Story) => (
               <StoryCard key={relatedStory.id} story={relatedStory} compact={true} />
             ))}
           </div>
