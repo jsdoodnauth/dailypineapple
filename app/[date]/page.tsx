@@ -79,7 +79,7 @@ export default async function DatePage({ params }: DatePageProps) {
               {/* Other Featured Stories */}
               {otherFeatured.length > 0 && (
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800 mb-4">Other Featured Stories</h2>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-4">Featured Stories</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {otherFeatured.map(story => (
                       <StoryCard key={story.id} story={story} featured={true} />
@@ -141,7 +141,7 @@ export default async function DatePage({ params }: DatePageProps) {
         {/* Sidebar */}
         <div className="space-y-6">
           <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-purple-100">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">Top Stories from Other Sections</h3>
+            <h3 className="text-xl font-bold text-gray-800 mb-4">Top Stories</h3>
             <div className="space-y-4">
               {sidebarStories.map(story => (
                 <StoryCard key={story.id} story={story} compact={true} />
@@ -150,7 +150,7 @@ export default async function DatePage({ params }: DatePageProps) {
           </div>
 
           <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-200">
-            <h3 className="text-lg font-bold text-gray-800 mb-3">Quick Navigation</h3>
+            <h3 className="text-lg font-bold text-gray-800 mb-3">Sections</h3>
             <div className="grid grid-cols-1 gap-2">
               {['Business', 'Sports', 'Entertainment', 'Politics', 'Opinion', 'Weather'].map(section => (
                 <Link 

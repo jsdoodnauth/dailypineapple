@@ -138,7 +138,7 @@ export default async function CategoryDatePage({ params }: CategoryDatePageProps
         {/* Sidebar */}
         <div className="space-y-6">
           <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-purple-100">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">Other Stories from This Date</h3>
+            <h3 className="text-xl font-bold text-gray-800 mb-4">Top Stories</h3>
             <div className="space-y-4">
               {allDateStories.map(story => (
                 <StoryCard key={story.id} story={story} compact={true} />
@@ -147,7 +147,7 @@ export default async function CategoryDatePage({ params }: CategoryDatePageProps
           </div>
 
           <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-200">
-            <h3 className="text-lg font-bold text-gray-800 mb-3">Other Sections from This Date</h3>
+            <h3 className="text-lg font-bold text-gray-800 mb-3">Sections</h3>
             <div className="grid grid-cols-1 gap-2">
               {categories.filter(cat => cat !== category).map(section => (
                 <Link 

@@ -164,7 +164,6 @@ export async function getStoriesByDate(date?: string): Promise<Story[]> {
       `SELECT * FROM stories WHERE date='${targetDate}'`
     );
     connection.releaseConnection;
-    console.log('results: ', rows);
     return rows as Story[];
   } catch (error) {
     console.error('Database query error:', error);
