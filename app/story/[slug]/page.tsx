@@ -20,6 +20,24 @@ export default async function StoryPage({ params }: StoryPageProps) {
 
   const relatedStories = getRandomStories(4, story.id);
 
+  function parseTags(tagList: any) {
+    return normalizeToArray(JSON.parse(tagList));
+  }
+
+  function normalizeToArray(input: string | string[]): string[] {
+    if (Array.isArray(input)) {
+      // already an array of strings
+      return input.map(item => item.trim());
+    }
+
+    if (typeof input === "string") {
+      // needs conversion
+      return input.split(",").map(item => item.trim()).filter(Boolean);
+    }
+
+    throw new Error("Input must be a string or string[]");
+  }
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
       {/* Main Content */}
@@ -66,7 +84,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
           {/* Article Footer */}
           <div className="mt-8 pt-6 border-t border-purple-100">
             <div className="flex flex-wrap gap-2 mb-4">
-              {JSON.parse(story.tags).length > 0 &&  JSON.parse(story.tags).map((tag: string) => (
+              {parseTags(story.tags).length > 0 &&  parseTags(story.tags).map((tag: string) => (
                 <span key={tag} className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">
                   #{tag}
                 </span>
